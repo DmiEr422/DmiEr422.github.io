@@ -4,122 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>窦墨 · 个人主页</title>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    primary: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' },
-                },
-                animation: {
-                    'fade-in': 'fadeIn 0.5s ease-out',
-                    'slide-up': 'slideUp 0.5s ease-out',
-                    'pulse-slow': 'pulse 3s infinite',
-                },
-                keyframes: {
-                    fadeIn: { '0%': { opacity:'0' }, '100%': { opacity:'1' } },
-                    slideUp: { '0%': { opacity:'0', transform:'translateY(20px)' }, '100%': { opacity:'1', transform:'translateY(0)' } },
-                }
-            }
-        }
-    }
+    tailwind.config = { theme: { extend: { colors: { primary: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' } }, animation: { 'fade-in':'fadeIn 0.5s ease-out', 'slide-up':'slideUp 0.5s ease-out' }, keyframes: { fadeIn:{ '0%':{ opacity:'0' },'100%':{ opacity:'1' } }, slideUp:{ '0%':{ opacity:'0', transform:'translateY(20px)' },'100%':{ opacity:'1', transform:'translateY(0)' } } } } } }
   </script>
   <style>
-    :root {
-      --bg: #0a0a12; --bg-card: #12121e; --bg-card-hover: #1a1a2e;
-      --accent: #4a7cff; --accent-glow: rgba(74,124,255,0.3);
-      --accent-secondary: #7c4aff; --text: #e0e0f0; --text-dim: #8888aa;
-      --border: #1e1e30;
-      --font-mono: 'SF Mono','Fira Code','JetBrains Mono',monospace;
-      --font-body: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC',sans-serif;
-    }
+    :root { --bg:#0a0a12; --bg-card:#12121e; --bg-card-hover:#1a1a2e; --accent:#4a7cff; --accent-glow:rgba(74,124,255,0.3); --accent-secondary:#7c4aff; --text:#e0e0f0; --text-dim:#8888aa; --border:#1e1e30; --font-mono:'SF Mono','Fira Code','JetBrains Mono',monospace; --font-body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC',sans-serif; }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body {
-      font-family:var(--font-body); background:var(--bg); color:var(--text);
-      line-height:1.6; overflow-x:hidden;
-    }
+    body { font-family:var(--font-body); background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden; }
     a { color:var(--accent); text-decoration:none; transition:0.3s; }
     a:hover { color:#99bbff; }
-
-    #particles {
-      position:fixed; inset:0; z-index:0; pointer-events:none;
-      opacity:0.5;
-    }
-
-    nav {
-      position:fixed; top:0; left:0; right:0; z-index:100;
-      display:flex; justify-content:space-between; align-items:center;
-      padding:1rem 5%;
-      background:rgba(10,10,18,0.8); backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--border);
-    }
+    #particles { position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.5; }
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1rem 5%; background:rgba(10,10,18,0.8); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
     .nav-brand { font-family:var(--font-mono); font-size:1.2rem; font-weight:700; color:var(--accent); letter-spacing:0.05em; }
     .nav-links { display:flex; gap:2rem; list-style:none; }
     .nav-links a { color:var(--text-dim); font-size:0.9rem; letter-spacing:0.05em; position:relative; }
-    .nav-links a::after {
-      content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px;
-      background:var(--accent); transition:0.3s;
-    }
+    .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--accent); transition:0.3s; }
     .nav-links a:hover { color:var(--text); }
     .nav-links a:hover::after { width:100%; }
     .nav-toggle { display:none; color:var(--text); font-size:1.5rem; cursor:pointer; }
-
     section { padding:5rem 5%; position:relative; z-index:1; }
-
     #hero { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:6rem 5% 4rem; }
     .hero-content { text-align:center; max-width:700px; }
-    .hero-badge {
-      display:inline-block; padding:0.4rem 1.2rem; border:1px solid var(--accent);
-      border-radius:2rem; font-size:0.8rem; font-family:var(--font-mono);
-      color:var(--accent); margin-bottom:1.5rem; letter-spacing:0.1em;
-    }
-    .hero-title {
-      font-size:clamp(3.5rem,10vw,6rem); font-weight:800; line-height:1.1;
-      margin-bottom:0.8rem;
-      background:linear-gradient(135deg,#e0e0f0 0%,var(--accent) 50%,var(--accent-secondary) 100%);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    }
+    .hero-badge { display:inline-block; padding:0.4rem 1.2rem; border:1px solid var(--accent); border-radius:2rem; font-size:0.8rem; font-family:var(--font-mono); color:var(--accent); margin-bottom:1.5rem; letter-spacing:0.1em; }
+    .hero-title { font-size:clamp(3.5rem,10vw,6rem); font-weight:800; line-height:1.1; margin-bottom:0.8rem; background:linear-gradient(135deg,#e0e0f0 0%,var(--accent) 50%,var(--accent-secondary) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .accent { -webkit-text-fill-color:var(--accent); color:var(--accent); }
     .hero-subtitle { font-size:1.1rem; color:var(--text-dim); font-family:var(--font-mono); margin-bottom:1rem; letter-spacing:0.05em; }
     .hero-desc { font-size:1rem; color:var(--text-dim); max-width:520px; margin:0 auto 2rem; line-height:1.8; }
     .hero-cta { display:flex; gap:1rem; justify-content:center; margin-bottom:3rem; }
-
-    .btn-primary, .btn-outline {
-      padding:0.8rem 2rem; border-radius:0.5rem; font-size:0.95rem;
-      font-weight:600; transition:0.3s; cursor:pointer;
-    }
-    .btn-primary {
-      background:var(--accent); color:#fff !important; border:none;
-      box-shadow:0 0 20px var(--accent-glow);
-    }
+    .btn-primary, .btn-outline { padding:0.8rem 2rem; border-radius:0.5rem; font-size:0.95rem; font-weight:600; transition:0.3s; cursor:pointer; }
+    .btn-primary { background:var(--accent); color:#fff !important; border:none; box-shadow:0 0 20px var(--accent-glow); }
     .btn-primary:hover { background:#5a8cff; box-shadow:0 0 30px var(--accent-glow); transform:translateY(-2px); }
-    .btn-outline {
-      background:transparent; color:var(--text) !important; border:1px solid var(--border);
-    }
+    .btn-outline { background:transparent; color:var(--text) !important; border:1px solid var(--border); }
     .btn-outline:hover { border-color:var(--accent); color:var(--accent) !important; transform:translateY(-2px); }
-
     .hero-stats { display:flex; justify-content:center; gap:2.5rem; }
     .stat-item { display:flex; flex-direction:column; align-items:center; }
     .stat-num { font-size:2rem; font-weight:700; font-family:var(--font-mono); color:var(--accent); line-height:1; }
     .stat-label { font-size:0.8rem; color:var(--text-dim); margin-top:0.3rem; }
-
     .section-title { font-size:1.8rem; font-weight:700; margin-bottom:1rem; font-family:var(--font-mono); }
     .section-sub { color:var(--text-dim); margin-bottom:2.5rem; font-size:0.95rem; }
-
     .about-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1.2rem; }
-    .about-card {
-      background:var(--bg-card); border:1px solid var(--border);
-      border-radius:1rem; padding:1.8rem 1.5rem; transition:0.3s;
-    }
+    .about-card { background:var(--bg-card); border:1px solid var(--border); border-radius:1rem; padding:1.8rem 1.5rem; transition:0.3s; }
     .about-card:hover { background:var(--bg-card-hover); border-color:var(--accent); transform:translateY(-4px); box-shadow:0 8px 30px rgba(74,124,255,0.08); }
     .card-icon { font-size:1.8rem; margin-bottom:1rem; }
     .about-card h3 { font-size:1.1rem; margin-bottom:0.6rem; }
     .about-card p { font-size:0.9rem; color:var(--text-dim); line-height:1.7; }
     .about-card strong { color:var(--accent); }
-
     .skills-container { display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:800px; }
     @media (max-width:640px) { .skills-container { grid-template-columns:1fr; } }
     .skill-group h3 { font-size:1.1rem; margin-bottom:1rem; }
@@ -131,99 +62,119 @@
     .skill-tags { display:flex; flex-wrap:wrap; gap:0.6rem; }
     .tag { padding:0.4rem 1rem; background:var(--bg-card); border:1px solid var(--border); border-radius:2rem; font-size:0.85rem; color:var(--text-dim); transition:0.3s; }
     .tag:hover { border-color:var(--accent); color:var(--accent); background:rgba(74,124,255,0.05); }
-
-    /* === Music Section === */
-    #music { border-top:1px solid var(--border); }
-
+    /* Music Cards */
     .music-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.5rem; }
-
-    .music-card {
-      background:var(--bg-card); border:1px solid var(--border);
-      border-radius:1.2rem; overflow:hidden; transition:0.3s;
-      position:relative;
-    }
-    .music-card:hover {
-      transform:translateY(-6px); box-shadow:0 12px 40px rgba(74,124,255,0.1);
-      border-color:var(--accent);
-    }
-
-    .music-card-header {
-      height:200px; display:flex; align-items:center; justify-content:center;
-      position:relative; overflow:hidden;
-    }
-
-    /* Marshmello - white mask theme */
-    .music-card.marshmello .music-card-header {
-      background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
-    }
-    .music-card.marshmello .mask-icon {
-      width:100px; height:120px; position:relative; z-index:2;
-    }
-    .music-card.marshmello .mask-icon svg { width:100%; height:100%; filter:drop-shadow(0 0 20px rgba(255,255,255,0.3)); }
-    .music-card.marshmello .music-card-header::after {
-      content:'◢ ◤'; position:absolute; bottom:15px; right:20px;
-      font-size:1.2rem; color:rgba(255,255,255,0.08); letter-spacing:8px;
-    }
-
-    /* Skrillex - green neon cyber */
-    .music-card.skrillex .music-card-header {
-      background:linear-gradient(135deg,#0a0a0a,#1a1a1a,#0d2818);
-    }
-    .music-card.skrillex .skrillex-logo {
-      font-size:3.5rem; font-weight:900; color:#39ff14;
-      font-family:var(--font-mono); letter-spacing:-3px;
-      text-shadow:0 0 30px rgba(57,255,20,0.4), 0 0 60px rgba(57,255,20,0.2);
-      position:relative; z-index:2;
-    }
-    .music-card.skrillex .music-card-header::after {
-      content:'//\\\\'; position:absolute; bottom:15px; right:20px;
-      font-size:2rem; font-family:var(--font-mono);
-      color:rgba(57,255,20,0.08); letter-spacing:4px;
-    }
-
-    /* Miku - blue cyber */
-    .music-card.miku .music-card-header {
-      background:linear-gradient(135deg,#0a1628,#1a2744,#003366);
-    }
-    .music-card.miku .miku-icon {
-      font-size:4.5rem; line-height:1; position:relative; z-index:2;
-      text-shadow:0 0 40px rgba(0,255,255,0.3);
-    }
-    .music-card.miku .music-card-header::after {
-      content:'♪ ♫'; position:absolute; bottom:15px; right:20px;
-      font-size:2rem; color:rgba(0,255,255,0.08); letter-spacing:8px;
-    }
-
+    .music-card { background:var(--bg-card); border:1px solid var(--border); border-radius:1.2rem; overflow:hidden; transition:0.3s; position:relative; }
+    .music-card:hover { transform:translateY(-6px); box-shadow:0 12px 40px rgba(74,124,255,0.1); border-color:var(--accent); }
+    .music-card-header { height:200px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
     .music-card-body { padding:1.5rem; }
-    .music-card-body h3 {
-      font-size:1.2rem; font-weight:700; margin-bottom:0.5rem;
-      display:flex; align-items:center; gap:0.5rem;
-    }
-    .music-card.marshmello h3 { color:#aaccff; }
-    .music-card.skrillex h3 { color:#39ff14; }
-    .music-card.miku h3 { color:#33ccff; }
-
-    .music-card-body .genre-tag {
-      display:inline-block; padding:0.2rem 0.8rem;
-      border-radius:1rem; font-size:0.75rem;
-      border:1px solid; margin-bottom:0.8rem;
-    }
-    .music-card.marshmello .genre-tag { border-color:#4a7cff; color:#4a7cff; }
-    .music-card.skrillex .genre-tag { border-color:#39ff14; color:#39ff14; }
-    .music-card.miku .genre-tag { border-color:#33ccff; color:#33ccff; }
-
+    .music-card-body h3 { font-size:1.2rem; font-weight:700; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem; }
+    .music-card-body .genre-tag { display:inline-block; padding:0.2rem 0.8rem; border-radius:1rem; font-size:0.75rem; border:1px solid; margin-bottom:0.8rem; }
     .music-card-body p { font-size:0.85rem; color:var(--text-dim); line-height:1.7; margin-bottom:0.8rem; }
     .music-card-body .song-samples { font-size:0.8rem; color:#555; }
     .music-card-body .song-samples span { color:var(--text-dim); }
-
-    .music-note { text-align:center; margin-top:2.5rem; color:#555; font-size:0.85rem; }
-
-    /* === Projects === */
-    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.2rem; }
-    .project-card {
-      background:var(--bg-card); border:1px solid var(--border); border-radius:1rem;
-      padding:2rem; transition:0.3s; min-height:200px;
+    /* Marshmello */ .music-card.marshmello .music-card-header { background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460); }
+    .music-card.marshmello h3 { color:#aaccff; }
+    .music-card.marshmello .genre-tag { border-color:#4a7cff; color:#4a7cff; }
+    /* Skrillex */ .music-card.skrillex .music-card-header { background:linear-gradient(135deg,#0a0a0a,#1a1a1a,#0d2818); }
+    .music-card.skrillex .skrillex-logo { font-size:3.5rem; font-weight:900; color:#39ff14; font-family:var(--font-mono); letter-spacing:-3px; text-shadow:0 0 30px rgba(57,255,20,0.4), 0 0 60px rgba(57,255,20,0.2); position:relative; z-index:2; }
+    .music-card.skrillex h3 { color:#39ff14; }
+    .music-card.skrillex .genre-tag { border-color:#39ff14; color:#39ff14; }
+    /* Miku */ .music-card.miku .music-card-header { background:linear-gradient(135deg,#0a1628,#1a2744,#003366); }
+    .music-card.miku .miku-icon { font-size:4.5rem; line-height:1; position:relative; z-index:2; text-shadow:0 0 40px rgba(0,255,255,0.3); }
+    .music-card.miku h3 { color:#33ccff; }
+    .music-card.miku .genre-tag { border-color:#33ccff; color:#33ccff; }
+    /* === 3D Lyrics Visualizer === */
+    .lyrics-section { margin-top:2.5rem; }
+    .lyrics-title { font-size:1.1rem; font-family:var(--font-mono); margin-bottom:1rem; color:var(--text-dim); text-align:center; letter-spacing:0.05em; }
+    .lyrics-player {
+      background:var(--bg-card); border:1px solid var(--border);
+      border-radius:1.2rem; overflow:hidden; position:relative;
     }
+    .lyrics-player:hover { border-color:var(--accent); }
+    .lyrics-viewport {
+      position:relative; width:100%; height:340px; overflow:hidden;
+      background:radial-gradient(ellipse at center,#0f0f20,#08081a);
+    }
+    .lyrics-viewport::before {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(to bottom, transparent 0%, rgba(10,10,18,1) 85%, rgba(10,10,18,1) 100%);
+      pointer-events:none; z-index:10;
+    }
+    .lyrics-viewport::after {
+      content:''; position:absolute; inset:0;
+      mask-image:linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image:linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+      perspective:1200px; perspective-origin:center center;
+    }
+    .lyrics-scene {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      perspective:1000px; perspective-origin:center 40%;
+    }
+    .lyrics-stage {
+      position:relative; width:90%; height:auto;
+      transform:rotateY(8deg) rotateX(3deg);
+      transform-origin:center center;
+      transform-style:preserve-3d;
+      transition:transform 1s ease;
+    }
+    .lyrics-track { position:relative; width:100%; }
+    .lyrics-timeline {
+      position:absolute; left:10px; top:0; bottom:0; width:1px;
+      background:rgba(74,124,255,0.15);
+    }
+    .lyric-line {
+      display:flex; align-items:center; padding:10px 10px 10px 24px;
+      transition:all 0.8s cubic-bezier(0.2,0.8,0.2,1);
+      position:relative;
+    }
+    .lyric-dot {
+      position:absolute; left:6px; width:9px; height:9px; border-radius:50%;
+      transition:all 0.5s ease; z-index:5;
+    }
+    .lyric-dot.inactive { background:rgba(255,255,255,0.1); transform:scale(0.5); }
+    .lyric-dot.past { background:var(--accent); opacity:0.4; transform:scale(0.6); }
+    .lyric-dot.active {
+      background:var(--accent); transform:scale(1.2);
+      box-shadow:0 0 15px var(--accent-glow);
+      border:2px solid rgba(74,124,255,0.3);
+    }
+    .lyric-text {
+      font-family:Georgia, 'Noto Serif SC', serif;
+      transition:all 0.8s cubic-bezier(0.2,0.8,0.2,1);
+      white-space:pre-wrap;
+    }
+    .lyric-text.inactive { font-size:16px; color:rgba(255,255,255,0.25); letter-spacing:0.05em; }
+    .lyric-text.past { font-size:16px; color:rgba(74,124,255,0.3); letter-spacing:0.05em; filter:blur(0.5px); }
+    .lyric-text.active {
+      font-size:26px; color:#fff; font-weight:500;
+      text-shadow:0 0 20px rgba(74,124,255,0.4);
+      transform:translateX(4px);
+    }
+    .lyric-text.karaoke-highlight { background-clip:text !important; -webkit-background-clip:text !important; color:transparent !important; }
+    .lyrics-controls {
+      display:flex; align-items:center; gap:1rem; padding:12px 20px;
+      background:rgba(0,0,0,0.3); border-top:1px solid var(--border);
+    }
+    .lyrics-play-btn {
+      width:40px; height:40px; border-radius:50%; background:var(--accent);
+      border:none; cursor:pointer; display:flex; align-items:center;
+      justify-content:center; transition:0.3s; flex-shrink:0;
+    }
+    .lyrics-play-btn:hover { transform:scale(1.1); box-shadow:0 0 20px var(--accent-glow); }
+    .lyrics-play-btn svg { width:20px; height:20px; fill:white; }
+    .lyrics-info { flex:1; }
+    .lyrics-song-title { font-size:0.9rem; color:var(--text); }
+    .lyrics-song-status { font-size:0.75rem; color:var(--text-dim); margin-top:2px; }
+    .lyrics-spectrum { display:flex; align-items:flex-end; gap:2px; height:28px; }
+    .lyrics-spectrum .sp-bar {
+      width:3px; border-radius:2px;
+      background:linear-gradient(to top,var(--accent),var(--accent-secondary));
+      transition:height 0.08s ease;
+    }
+    /* Projects */
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.2rem; }
+    .project-card { background:var(--bg-card); border:1px solid var(--border); border-radius:1rem; padding:2rem; transition:0.3s; min-height:200px; }
     .project-card:hover { border-color:var(--accent); background:var(--bg-card-hover); transform:translateY(-4px); }
     .project-card.placeholder { display:flex; align-items:center; justify-content:center; }
     .project-placeholder-inner { text-align:center; color:var(--text-dim); }
@@ -233,44 +184,24 @@
     .project-card.dynamic { display:flex; flex-direction:column; justify-content:space-between; }
     .project-card.dynamic h3 { font-size:1.1rem; margin-bottom:0.6rem; color:var(--accent); }
     .project-card.dynamic p { font-size:0.9rem; color:var(--text-dim); line-height:1.6; margin-bottom:1rem; }
-    .project-card.dynamic a {
-      align-self:flex-start; padding:0.4rem 1rem; border:1px solid var(--accent);
-      border-radius:0.4rem; font-size:0.8rem; color:var(--accent) !important;
-      transition:0.3s;
-    }
+    .project-card.dynamic a { align-self:flex-start; padding:0.4rem 1rem; border:1px solid var(--accent); border-radius:0.4rem; font-size:0.8rem; color:var(--accent) !important; transition:0.3s; }
     .project-card.dynamic a:hover { background:var(--accent); color:#fff !important; }
-
     .contact-links { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-bottom:1.5rem; }
-    .contact-item {
-      display:flex; flex-direction:column; align-items:center; gap:0.5rem;
-      padding:1.2rem 2rem; background:var(--bg-card); border:1px solid var(--border);
-      border-radius:1rem; transition:0.3s; color:var(--text-dim) !important; min-width:120px;
-    }
+    .contact-item { display:flex; flex-direction:column; align-items:center; gap:0.5rem; padding:1.2rem 2rem; background:var(--bg-card); border:1px solid var(--border); border-radius:1rem; transition:0.3s; color:var(--text-dim) !important; min-width:120px; }
     .contact-item:hover { border-color:var(--accent); color:var(--accent) !important; transform:translateY(-4px); box-shadow:0 8px 20px rgba(74,124,255,0.1); }
     .contact-item svg { width:28px; height:28px; }
     .contact-item span { font-size:0.85rem; }
-    .contact-note { text-align:center; color:#555; font-size:0.85rem; margin-top:1rem; }
-
     footer { text-align:center; padding:2rem; border-top:1px solid var(--border); position:relative; z-index:1; }
     footer p { font-size:0.85rem; color:var(--text-dim); }
     .heart { color:#ff4466; display:inline-block; animation:heartbeat 1.5s infinite; }
-    @keyframes heartbeat { 0%,100% { transform:scale(1); } 50% { transform:scale(1.2); } }
-
+    @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+    .live-badge { display:inline-flex; align-items:center; gap:6px; padding:0.3rem 0.8rem; background:rgba(74,124,255,0.1); border:1px solid var(--accent); border-radius:2rem; font-size:0.75rem; font-family:var(--font-mono); color:var(--accent); margin-top:0.5rem; }
+    .live-dot { width:6px; height:6px; border-radius:50%; background:#4ade80; animation:pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.3} }
     ::-webkit-scrollbar { width:6px; }
     ::-webkit-scrollbar-track { background:var(--bg); }
     ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
     ::-webkit-scrollbar-thumb:hover { background:var(--accent); }
-
-    .live-badge {
-      display:inline-flex; align-items:center; gap:6px;
-      padding:0.3rem 0.8rem; background:rgba(74,124,255,0.1);
-      border:1px solid var(--accent); border-radius:2rem;
-      font-size:0.75rem; font-family:var(--font-mono);
-      color:var(--accent); margin-top:0.5rem;
-    }
-    .live-dot { width:6px; height:6px; border-radius:50%; background:#4ade80; animation:pulse-dot 2s infinite; }
-    @keyframes pulse-dot { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-
     @media (max-width:768px) {
       .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(10,10,18,0.95); padding:1rem 5%; border-bottom:1px solid var(--border); }
       .nav-links.open { display:flex; }
@@ -278,268 +209,414 @@
       .hero-stats { gap:1.5rem; flex-wrap:wrap; }
       .hero-cta { flex-direction:column; align-items:center; }
       .contact-links { gap:1rem; }
+      .lyrics-viewport { height:280px; }
     }
   </style>
-  <!-- AiPexBase SDK -->
   <script src="https://cdn.jsdelivr.net/npm/aipexbase-js/dist/aipexbase.umd.min.js"></script>
 </head>
 <body>
-
-  <canvas id="particles"></canvas>
-
-  <nav>
-    <div class="nav-brand">❖ 窦墨</div>
-    <ul class="nav-links">
-      <li><a href="#hero">首页</a></li>
-      <li><a href="#about">关于</a></li>
-      <li><a href="#skills">能力</a></li>
-      <li><a href="#music">🎵 音乐</a></li>
-      <li><a href="#projects">项目</a></li>
-      <li><a href="#contact">联系</a></li>
-    </ul>
-    <div class="nav-toggle">☰</div>
-  </nav>
-
-  <section id="hero">
-    <div class="hero-content">
-      <div class="hero-badge" id="hero-badge">✦ 加载中…</div>
-      <h1 class="hero-title">窦<span class="accent">墨</span></h1>
-      <p class="hero-subtitle">物化生 · 636分 · 全省2367名</p>
-      <p class="hero-desc" id="hero-tagline">加载中…</p>
-      <div class="hero-cta">
-        <a href="#about" class="btn-primary">了解我 →</a>
-        <a href="#contact" class="btn-outline">联系我</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat-item"><span class="stat-num">130</span><span class="stat-label">语文</span></div>
-        <div class="stat-item"><span class="stat-num">94</span><span class="stat-label">化学</span></div>
-        <div class="stat-item"><span class="stat-num">88</span><span class="stat-label">生物</span></div>
-        <div class="stat-item"><span class="stat-num">133</span><span class="stat-label">外语</span></div>
-      </div>
-      <div class="live-badge"><span class="live-dot"></span> 数据实时同步</div>
+<canvas id="particles"></canvas>
+<nav>
+  <div class="nav-brand">❖ 窦墨</div>
+  <ul class="nav-links">
+    <li><a href="#hero">首页</a></li>
+    <li><a href="#about">关于</a></li>
+    <li><a href="#skills">能力</a></li>
+    <li><a href="#music">🎵 音乐</a></li>
+    <li><a href="#projects">项目</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+  <div class="nav-toggle">☰</div>
+</nav>
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge" id="hero-badge">✦ 加载中…</div>
+    <h1 class="hero-title">窦<span class="accent">墨</span></h1>
+    <p class="hero-subtitle">物化生 · 636分 · 全省2367名</p>
+    <p class="hero-desc" id="hero-tagline">加载中…</p>
+    <div class="hero-cta">
+      <a href="#about" class="btn-primary">了解我 →</a>
+      <a href="#contact" class="btn-outline">联系我</a>
     </div>
-  </section>
-
-  <section id="about">
-    <h2 class="section-title"><span class="accent">/</span> 关于我</h2>
-    <div class="about-grid">
-      <div class="about-card"><div class="card-icon">🎯</div><h3>专业方向</h3><p>发挥化生优势，聚焦<strong>生物制造、生物医学工程、新能源与化工材料</strong>。同时保持对网络安全和计算机领域的好奇心。</p></div>
-      <div class="about-card"><div class="card-icon">🌏</div><h3>国际化视野</h3><p>外语133分，具备优秀的英语能力，适合<strong>国际化方向</strong>的深造与职业发展。</p></div>
-      <div class="about-card"><div class="card-icon">⚡</div><h3>理性务实</h3><p>物理75 · 数学111——清醒认知自身数理边界，<strong>用田忌赛马的策略</strong>选择最能发挥优势的赛道。</p></div>
-      <div class="about-card"><div class="card-icon">🎧</div><h3>生活态度</h3><p>耳机不离身，音乐是第二语言。相信<strong>热爱和好奇</strong>才是驱动前进的真正引擎。</p></div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">130</span><span class="stat-label">语文</span></div>
+      <div class="stat-item"><span class="stat-num">94</span><span class="stat-label">化学</span></div>
+      <div class="stat-item"><span class="stat-num">88</span><span class="stat-label">生物</span></div>
+      <div class="stat-item"><span class="stat-num">133</span><span class="stat-label">外语</span></div>
     </div>
-  </section>
-
-  <section id="skills">
-    <h2 class="section-title"><span class="accent">/</span> 能力图谱</h2>
-    <div class="skills-container">
-      <div class="skill-group">
-        <h3>🔬 学科优势</h3>
-        <div class="skill-bar"><span class="skill-name">化学</span><div class="bar"><div class="fill" style="width:94%"></div></div><span class="skill-pct">94</span></div>
-        <div class="skill-bar"><span class="skill-name">生物</span><div class="bar"><div class="fill" style="width:88%"></div></div><span class="skill-pct">88</span></div>
-        <div class="skill-bar"><span class="skill-name">外语</span><div class="bar"><div class="fill" style="width:89%"></div></div><span class="skill-pct">133</span></div>
-        <div class="skill-bar"><span class="skill-name">语文</span><div class="bar"><div class="fill" style="width:87%"></div></div><span class="skill-pct">130</span></div>
+    <div class="live-badge"><span class="live-dot"></span> 数据实时同步</div>
+  </div>
+</section>
+<section id="about">
+  <h2 class="section-title"><span class="accent">/</span> 关于我</h2>
+  <div class="about-grid">
+    <div class="about-card"><div class="card-icon">🎯</div><h3>专业方向</h3><p>发挥化生优势，聚焦<strong>生物制造、生物医学工程、新能源与化工材料</strong>。同时保持对网络安全和计算机领域的好奇心。</p></div>
+    <div class="about-card"><div class="card-icon">🌏</div><h3>国际化视野</h3><p>外语133分，具备优秀的英语能力，适合<strong>国际化方向</strong>的深造与职业发展。</p></div>
+    <div class="about-card"><div class="card-icon">⚡</div><h3>理性务实</h3><p>物理75 · 数学111——清醒认知自身数理边界，<strong>用田忌赛马的策略</strong>选择最能发挥优势的赛道。</p></div>
+    <div class="about-card"><div class="card-icon">🎧</div><h3>生活态度</h3><p>耳机不离身，音乐是第二语言。相信<strong>热爱和好奇</strong>才是驱动前进的真正引擎。</p></div>
+  </div>
+</section>
+<section id="skills">
+  <h2 class="section-title"><span class="accent">/</span> 能力图谱</h2>
+  <div class="skills-container">
+    <div class="skill-group">
+      <h3>🔬 学科优势</h3>
+      <div class="skill-bar"><span class="skill-name">化学</span><div class="bar"><div class="fill" style="width:94%"></div></div><span class="skill-pct">94</span></div>
+      <div class="skill-bar"><span class="skill-name">生物</span><div class="bar"><div class="fill" style="width:88%"></div></div><span class="skill-pct">88</span></div>
+      <div class="skill-bar"><span class="skill-name">外语</span><div class="bar"><div class="fill" style="width:89%"></div></div><span class="skill-pct">133</span></div>
+      <div class="skill-bar"><span class="skill-name">语文</span><div class="bar"><div class="fill" style="width:87%"></div></div><span class="skill-pct">130</span></div>
+    </div>
+    <div class="skill-group">
+      <h3>💻 技术兴趣</h3>
+      <div class="skill-tags">
+        <span class="tag">网络安全</span><span class="tag">编程入门</span><span class="tag">生物信息学</span><span class="tag">AI辅助开发</span><span class="tag">Vibe Coding</span>
       </div>
-      <div class="skill-group">
-        <h3>💻 技术兴趣</h3>
-        <div class="skill-tags">
-          <span class="tag">网络安全</span><span class="tag">编程入门</span><span class="tag">生物信息学</span><span class="tag">AI辅助开发</span><span class="tag">Vibe Coding</span>
+    </div>
+  </div>
+</section>
+<section id="music">
+  <h2 class="section-title"><span class="accent">/</span> 音乐宇宙</h2>
+  <p class="section-sub" id="music-stats">🎵 已播放 56251 首 · 数据持续更新</p>
+  <div class="music-grid">
+    <!-- Marshmello -->
+    <div class="music-card marshmello">
+      <div class="music-card-header">
+        <div style="position:relative;z-index:2">
+          <svg viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg" width="140" height="154">
+            <!-- 头盔主体（棉花糖矩形） -->
+            <rect x="60" y="25" width="80" height="90" rx="30" ry="30" fill="none" stroke="white" stroke-width="4.5"/>
+            <!-- M字母双臂 - 左侧 -->
+            <path d="M60 115 L20 20 Q15 8 30 8 L50 8 Q60 8 60 20 L60 50" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- M字母双臂 - 右侧 -->
+            <path d="M140 115 L180 20 Q185 8 170 8 L150 8 Q140 8 140 20 L140 50" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- X眼睛 - 左 -->
+            <line x1="78" y1="55" x2="92" y2="72" stroke="white" stroke-width="5" stroke-linecap="round"/>
+            <line x1="92" y1="55" x2="78" y2="72" stroke="white" stroke-width="5" stroke-linecap="round"/>
+            <!-- X眼睛 - 右 -->
+            <line x1="108" y1="55" x2="122" y2="72" stroke="white" stroke-width="5" stroke-linecap="round"/>
+            <line x1="122" y1="55" x2="108" y2="72" stroke="white" stroke-width="5" stroke-linecap="round"/>
+            <!-- 微笑嘴巴 -->
+            <path d="M75 85 Q100 105 125 85" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+            <!-- 头盔底部两个小突起 -->
+            <ellipse cx="85" cy="118" rx="12" ry="8" fill="none" stroke="white" stroke-width="4"/>
+            <ellipse cx="115" cy="118" rx="12" ry="8" fill="none" stroke="white" stroke-width="4"/>
+            <!-- 底部文字 MARSHMELLO -->
+            <text x="100" y="195" text-anchor="middle" fill="none" stroke="white" stroke-width="2.5" font-size="22" font-family="Arial Rounded MT Bold, Arial, sans-serif" font-weight="bold" letter-spacing="3">MARSHMELLO</text>
+          </svg>
         </div>
       </div>
+      <div class="music-card-body">
+        <h3>Marshmello <span class="genre-tag">Future Bass</span></h3>
+        <p>永远戴着头盔的神秘音乐人，用温暖的旋律和治愈的电音征服全球。2016年以《Alone》一炮而红，之后不断打破EDM边界。</p>
+        <p>🎧 代表作：<span class="song-samples">《Alone》《Happier》《Friends》《Silence》《Wolves》</span></p>
+      </div>
     </div>
-  </section>
-
-  <!-- 🎵 Music Section -->
-  <section id="music">
-    <h2 class="section-title"><span class="accent">/</span> 音乐宇宙</h2>
-    <p class="section-sub" id="music-stats">🎵 已播放 56251 首 · 数据持续更新</p>
-    <div class="music-grid">
-      <!-- Marshmello -->
-      <div class="music-card marshmello">
-        <div class="music-card-header">
-          <div class="mask-icon">
-            <svg viewBox="0 0 200 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Marshmello标志性头盔 -->
-              <ellipse cx="100" cy="115" rx="60" ry="70" fill="white" opacity="0.9"/>
-              <ellipse cx="100" cy="115" rx="55" ry="65" fill="#f0f0f0"/>
-              <!-- 眼睛 -->
-              <ellipse cx="77" cy="105" rx="10" ry="6" fill="#333"/>
-              <ellipse cx="123" cy="105" rx="10" ry="6" fill="#333"/>
-              <!-- X眼睛 - 标志性 -->
-              <line x1="70" y1="98" x2="84" y2="112" stroke="#333" stroke-width="3" stroke-linecap="round"/>
-              <line x1="84" y1="98" x2="70" y2="112" stroke="#333" stroke-width="3" stroke-linecap="round"/>
-              <line x1="116" y1="98" x2="130" y2="112" stroke="#333" stroke-width="3" stroke-linecap="round"/>
-              <line x1="130" y1="98" x2="116" y2="112" stroke="#333" stroke-width="3" stroke-linecap="round"/>
-              <!-- 嘴巴 - 微笑 -->
-              <path d="M78 135 Q100 150 122 135" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <!-- 标志 -->
-              <text x="100" y="200" text-anchor="middle" fill="rgba(0,0,0,0.15)" font-size="16" font-weight="bold" font-family="Arial">MARSHMELLO</text>
-            </svg>
+    <!-- Skrillex -->
+    <div class="music-card skrillex">
+      <div class="music-card-header">
+        <div class="skrillex-logo">SKRILLEX</div>
+      </div>
+      <div class="music-card-body">
+        <h3>Skrillex <span class="genre-tag">Dubstep / Electro</span></h3>
+        <p>电子音乐界的革命者，把Dubstep带向主流的第一人。8座格莱美奖得主，以标志性的"摇滚发型"和炸裂的Drop闻名全球。</p>
+        <p>🎧 代表作：<span class="song-samples">《Scary Monsters and Nice Sprites》《Bangarang》《First of the Year》《Cinema》</span></p>
+      </div>
+    </div>
+    <!-- 初音未来 -->
+    <div class="music-card miku">
+      <div class="music-card-header">
+        <div class="miku-icon">🎤💙</div>
+      </div>
+      <div class="music-card-body">
+        <h3>初音未来 <span class="genre-tag">Vocaloid</span></h3>
+        <p>世界最著名的虚拟歌姬，诞生于2007年。葱绿色双马尾的18岁少女，用VOCALOID引擎唱出无数经典。从《世界第一的公主殿下》到《千本樱》，用科技与艺术跨越虚拟与现实的界限。</p>
+        <p>🎧 代表作：<span class="song-samples">《千本樱》《世界第一的公主殿下》《Melt》《初音未来的消失》《Tell Your World》</span></p>
+      </div>
+    </div>
+  </div>
+  <!-- 3D Lyrics Visualizer -->
+    </div>
+  </div>
+  <!-- 3D Lyrics Visualizer -->
+  <div class="lyrics-section">
+    <h3 class="lyrics-title"><span class="accent">♪</span> 3D 歌词播放器 <span class="accent">♪</span></h3>
+    <div class="lyrics-player">
+      <div class="lyrics-viewport" id="lyrics-viewport">
+        <div class="lyrics-scene">
+          <div class="lyrics-stage" id="lyrics-stage">
+            <div class="lyrics-track" id="lyrics-track">
+              <div class="lyrics-timeline"></div>
+            </div>
           </div>
         </div>
-        <div class="music-card-body">
-          <h3>Marshmello <span class="genre-tag">Future Bass</span></h3>
-          <p>永远戴着头盔的神秘音乐人，用温暖的旋律和治愈的电音征服全球。2016年以《Alone》一炮而红，之后不断打破EDM边界。</p>
-          <p>🎧 代表作：<span class="song-samples">《Alone》《Happier》《Friends》《Silence》《Wolves》</span></p>
+      </div>
+      <!-- 进度条 -->
+      <div class="lyrics-progress">
+        <div id="progress-bar">
+          <div id="progress-fill"></div>
+        </div>
+        <div class="progress-time">
+          <span id="song-current-time">0:00</span>
+          <span id="song-total-time">0:00</span>
         </div>
       </div>
-
-      <!-- Skrillex -->
-      <div class="music-card skrillex">
-        <div class="music-card-header">
-          <div class="skrillex-logo">SKRILLEX</div>
+      <!-- 控制栏 -->
+      <div class="lyrics-controls">
+        <button class="ctrl-btn" onclick="prevTrack()" title="上一首">
+          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+        </button>
+        <button class="lyrics-play-btn" onclick="togglePlay()" title="播放/暂停">
+          <svg id="lyrics-play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="ctrl-btn" onclick="nextTrack()" title="下一首">
+          <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+        </button>
+        <div class="lyrics-info">
+          <div class="lyrics-song-title" id="lyrics-song-title">♪ Marshmello - Alone</div>
+          <div class="lyrics-song-status" id="lyrics-song-status">点击播放 · 歌词同步滚动</div>
         </div>
-        <div class="music-card-body">
-          <h3>Skrillex <span class="genre-tag">Dubstep / Electro</span></h3>
-          <p>电子音乐界的革命者，把Dubstep带向主流的第一人。8座格莱美奖得主，以标志性的"摇滚发型"和炸裂的Drop闻名全球。</p>
-          <p>🎧 代表作：<span class="song-samples">《Scary Monsters and Nice Sprites》《Bangarang》《First of the Year》《Cinema》</span></p>
+        <div class="volume-wrap" title="音量">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.49 4.49 0 0 0 2.5-3.5z"/></svg>
+          <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.5">
         </div>
-      </div>
-
-      <!-- 初音未来 -->
-      <div class="music-card miku">
-        <div class="music-card-header">
-          <div class="miku-icon">🎤💙</div>
-        </div>
-        <div class="music-card-body">
-          <h3>初音未来 <span class="genre-tag">Vocaloid</span></h3>
-          <p>世界最著名的虚拟歌姬，诞生于2007年。葱绿色双马尾的16岁少女，用VOCALOID引擎唱出无数经典。从《世界第一的公主殿下》到《千本樱》，用科技与艺术跨越虚拟与现实的界限。</p>
-          <p>🎧 代表作：<span class="song-samples">《千本樱》《世界第一的公主殿下》《Melt》《初音未来的消失》《Tell Your World》</span></p>
+        <div class="lyrics-spectrum" id="lyrics-spectrum">
+          <div class="sp-bar" style="height:4px"></div><div class="sp-bar" style="height:8px"></div>
+          <div class="sp-bar" style="height:12px"></div><div class="sp-bar" style="height:16px"></div>
+          <div class="sp-bar" style="height:20px"></div><div class="sp-bar" style="height:24px"></div>
+          <div class="sp-bar" style="height:20px"></div><div class="sp-bar" style="height:16px"></div>
+          <div class="sp-bar" style="height:12px"></div><div class="sp-bar" style="height:8px"></div>
+          <div class="sp-bar" style="height:4px"></div>
         </div>
       </div>
     </div>
-    <p class="music-note">🎧 Your vibe, your tribe.</p>
-  </section>
+  </div>
+</section>
 
-  <section id="projects">
-    <h2 class="section-title"><span class="accent">/</span> 项目</h2>
-    <p class="section-sub">不断更新中——</p>
-    <div class="projects-grid" id="projects-grid">
-      <!-- 动态从数据库加载 -->
-    </div>
-  </section>
+<section id="projects">
+  <h2 class="section-title"><span class="accent">/</span> 项目</h2>
+  <p class="section-sub">不断更新中——</p>
+  <div class="projects-grid" id="projects-grid"></div>
+</section>
 
-  <section id="contact">
-    <h2 class="section-title"><span class="accent">/</span> 联系我</h2>
-    <p class="section-sub">随时欢迎交流</p>
-    <div class="contact-links">
-      <a href="https://y.music.163.com/m/user?id=1454035899" class="contact-item" title="网易云音乐" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.674 11.36c.338 2.34-.576 4.644-2.268 6.264a8.91 8.91 0 0 1-6.648 2.592C5.328 20.124 2 16.884 2 12.996c0-2.16.9-4.14 2.34-5.58a8.082 8.082 0 0 1 5.76-2.412c.432 0 .864.036 1.296.108a.468.468 0 0 1 .396.468v2.16c0 .252-.18.468-.432.504-1.116.18-2.124.648-2.916 1.44a4.716 4.716 0 0 0-1.404 3.384c0 2.34 1.692 4.284 3.888 4.572 1.512.216 3.06-.324 4.14-1.296.828-.756 1.332-1.8 1.476-2.952l.216-2.052a7.26 7.26 0 0 0-.18-1.98c-.072-.324.18-.648.504-.648h2.124a.456.456 0 0 1 .468.468c.036.216.036.432.072.648zm-5.112-.18c.144.468.216.936.216 1.404 0 .792-.216 1.548-.648 2.196-.36.504-.936.792-1.584.828-.936.036-1.836-.576-2.052-1.584a3.564 3.564 0 0 1 .756-3.096c.468-.54 1.116-.864 1.836-.936a4.46 4.46 0 0 1 1.584.216c.324.108.432.468.324.756.036.072.036.144.036.216h.576c.468.14.72.54.756.972zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0z"/></svg>
-        <span>网易云音乐</span>
-      </a>
-      <a href="https://github.com/" class="contact-item" title="GitHub" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        <span>GitHub</span>
-      </a>
-    </div>
-  </section>
+<section id="contact">
+  <h2 class="section-title"><span class="accent">/</span> 联系我</h2>
+  <p class="section-sub">随时欢迎交流</p>
+  <div class="contact-links">
+    <a href="https://y.music.163.com/m/user?id=1454035899" class="contact-item" title="网易云音乐" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.674 11.36c.338 2.34-.576 4.644-2.268 6.264a8.91 8.91 0 0 1-6.648 2.592C5.328 20.124 2 16.884 2 12.996c0-2.16.9-4.14 2.34-5.58a8.082 8.082 0 0 1 5.76-2.412c.432 0 .864.036 1.296.108a.468.468 0 0 1 .396.468v2.16c0 .252-.18.468-.432.504-1.116.18-2.124.648-2.916 1.44a4.716 4.716 0 0 0-1.404 3.384c0 2.34 1.692 4.284 3.888 4.572 1.512.216 3.06-.324 4.14-1.296.828-.756 1.332-1.8 1.476-2.952l.216-2.052a7.26 7.26 0 0 0-.18-1.98c-.072-.324.18-.648.504-.648h2.124a.456.456 0 0 1 .468.468c.036.216.036.432.072.648zm-5.112-.18c.144.468.216.936.216 1.404 0 .792-.216 1.548-.648 2.196-.36.504-.936.792-1.584.828-.936.036-1.836-.576-2.052-1.584a3.564 3.564 0 0 1 .756-3.096c.468-.54 1.116-.864 1.836-.936a4.46 4.46 0 0 1 1.584.216c.324.108.432.468.324.756.036.072.036.144.036.216h.576c.468.14.72.54.756.972zM12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0z"/></svg>
+      <span>网易云音乐</span>
+    </a>
+    <a href="https://github.com/" class="contact-item" title="GitHub" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      <span>GitHub</span>
+    </a>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2026 窦墨 · Made with <span class="heart">❤</span> and Vibe Coding</p>
-  </footer>
+<footer><p>© 2026 窦墨 · Made with <span class="heart">❤</span> and Vibe Coding</p></footer>
 
-  <!-- Toast -->
-  <div id="toast-container" class="fixed top-4 right-4 z-50 space-y-3"></div>
+<div id="toast-container" class="fixed top-4 right-4 z-50 space-y-3"></div>
 
-  <script>
-    const client = aipexbase.createClient({
-      baseUrl: 'https://baas.kuafuai.net/baas-api',
-      apiKey: 'baas_7IIf71CB'
-    });
+<script>
+const client = aipexbase.createClient({ baseUrl:'https://baas.kuafuai.net/baas-api', apiKey:'baas_7IIf71CB' });
+function showToast(msg,t) { const c=document.getElementById('toast-container'),e=document.createElement('div'); e.className=`px-4 py-3 rounded-xl border shadow-lg animate-slide-down ${t==='error'?'bg-red-900/80 border-red-700 text-red-300':'bg-green-900/80 border-green-700 text-green-300'}`; e.textContent=msg; c.appendChild(e); setTimeout(()=>{e.style.opacity='0';e.style.transform='translateX(100%)';e.style.transition='all 0.3s';setTimeout(()=>e.remove(),300);},3000); }
+async function loadStats() { try { const r=await client.db.from('site_stats').list(); if(r.success&&r.data){const s={};r.data.forEach(i=>{s[i.stat_key]=i.stat_value});document.getElementById('hero-badge').textContent='✦ '+(s.greeting||'2026 高考生');document.getElementById('hero-tagline').textContent=s.tagline||'';document.getElementById('music-stats').textContent='🎵 已播放 '+(s.music_plays||56251)+' 首 · 数据持续更新';}}catch(e){document.getElementById('hero-badge').textContent='✦ 2026 高考生 · 636分 · 全省2367名';document.getElementById('hero-tagline').textContent='以化生为矛，以外语为翼';}}
+async function loadProjects() { try { const r=await client.db.from('projects').list(); const g=document.getElementById('projects-grid'); g.innerHTML=''; if(r.success&&r.data&&r.data.length>0){r.data.sort((a,b)=>(a.sort_order||999)-(b.sort_order||999));r.data.forEach(p=>{const c=document.createElement('div');c.className='project-card dynamic animate-fade-in';c.innerHTML=`<div><h3>${p.title}</h3><p>${p.description||''}</p></div>${p.link?`<a href="${p.link}" target="_blank">查看详情 →</a>`:''}`;g.appendChild(c);});}const ct=g.children.length;const pts=['更多可能性在等着你','生物制造 · 新能源','等待你的下一个灵感'];const pss=['从vibecoding启程','未来的主战场','由你定义'];for(let i=ct;i<Math.max(3,ct+1);i++){const idx=i-ct;const c=document.createElement('div');c.className='project-card placeholder animate-fade-in';c.innerHTML=`<div class="project-placeholder-inner"><span class="plus-icon">+</span><p>${pts[idx%3]}</p><small>${pss[idx%3]}</small></div>`;g.appendChild(c);}}catch(e){console.warn(e);}}
 
-    function showToast(msg, type='success') {
-      const c=document.getElementById('toast-container');
-      const t=document.createElement('div');
-      t.className=`px-4 py-3 rounded-xl border shadow-lg animate-slide-down ${
-        type==='success'?'bg-green-900/80 border-green-700 text-green-300':
-        type==='error'?'bg-red-900/80 border-red-700 text-red-300':
-        'bg-blue-900/80 border-blue-700 text-blue-300'}`;
-      t.textContent=msg; c.appendChild(t);
-      setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(100%)';t.style.transition='all 0.3s';setTimeout(()=>t.remove(),300);},3000);
+// ===== 播放器系统 =====
+const PLAYLIST = [
+  {
+    title: "Alone",
+    artist: "Marshmello",
+    src: "https://nsp-hag-dist2dtemp-drcn.obs.cn-north-2.myhuaweicloud.cn/osms/9/4/2d356fe3704c473fbbf7fa205327cf68/a781b4e46e9240a3978f91e742e3151c.m4a?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=HPUAIXUY93FWZJAS0ICQ%2F20260709%2Fcn-north-2%2Fs3%2Faws4_request&X-Amz-Date=20260709T181900Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=e8371fda37fcae19e802ae7a52702dc6ba094dd08b897304b8b0758a5b3cff37",
+    lrc: "[01:08.71]I'm so alone\n[01:11.25]Nothing feels like home\n[01:14.89]I'm so alone\n[01:18.05]Try to find my way back home to you\n[01:21.64]I'm so alone\n[01:24.85]Nothing feels like home\n[01:28.36]I'm so alone\n[01:31.37]Try to find my way back home to you\n[01:42.30]I'm so alone\n[01:44.88]Try to find my way back home to you\n[03:10.40]I'm so alone\n[03:12.75]Nothing feels like home\n[03:16.48]I'm so alone\n[03:19.37]Try to find my way back home to you\n[03:23.30]I'm so alone\n[03:26.24]Nothing feels like home\n[03:29.88]I'm so alone\n[03:33.32]Try to find my way back home to you\n[03:44.48]I'm so alone\n[03:47.51]Try to find my way back home to you"
+  }
+  // 墨墨加歌：复制上面 {}，改 title/artist/src/lrc 即可
+];
+
+let currentTrack = 0;
+let isPlaying = false;
+let audioEl = null;
+let audioCtx = null;
+let analyser = null;
+let spectrumRAF = null;
+let timeInterval = null;
+
+function parseLRC(lrc) {
+  const lines = [];
+  for (const raw of lrc.split('\n')) {
+    const line = raw.trim();
+    if (!line) continue;
+    const m = line.match(/\[(\d{2}):(\d{2})\.(\d{2,3})\]/);
+    if (!m) continue;
+    const time = parseInt(m[1])*60 + parseInt(m[2]) + parseInt(m[3])/(m[3].length===2?100:1000);
+    const text = line.replace(/\[\d{2}:\d{2}\.\d{2,3}\]/,'').trim();
+    if (text) lines.push({time,text});
+  }
+  return lines.sort((a,b)=>a.time-b.time);
+}
+
+function renderLyrics(time) {
+  const track = document.getElementById('lyrics-track');
+  track.innerHTML = '<div class="lyrics-timeline"></div>';
+  const lyrics = parseLRC(PLAYLIST[currentTrack].lrc);
+  let activeIdx = -1;
+  for (let i=0;i<lyrics.length;i++) { if(time>=lyrics[i].time-0.1) activeIdx=i; else break; }
+  const VS=Math.max(0,activeIdx-4), VE=Math.min(lyrics.length,activeIdx+6);
+  const rendered = lyrics.slice(VS,VE);
+  rendered.forEach((line,idx)=>{
+    const ri=VS+idx, isActive=ri===activeIdx, isPast=ri<activeIdx;
+    const div=document.createElement('div'); div.className='lyric-line';
+    const dot=document.createElement('div'); dot.className=`lyric-dot ${isActive?'active':isPast?'past':'inactive'}`; div.appendChild(dot);
+    const text=document.createElement('div'); text.className=`lyric-text ${isActive?'active':isPast?'past':'inactive'}`;
+    if(isActive){
+      const nextT=ri+1<lyrics.length?lyrics[ri+1].time:time+3;
+      const chars=[...line.text]; const dur=Math.max(nextT-line.time,0.8); const step=dur/chars.length;
+      chars.forEach((ch,ci)=>{
+        const ct=line.time+ci*step, p=time>=ct?Math.min(1,(time-ct)/0.12):0;
+        const s=document.createElement('span');
+        if(p>=0.99){s.style.color='#4a7cff';s.style.textShadow='0 0 14px rgba(74,124,255,0.5)';}
+        else if(p<=0.01){s.style.color='rgba(255,255,255,0.35)';}
+        else{const pc=Math.round(p*100);s.style.backgroundImage=`linear-gradient(90deg, #4a7cff ${pc}%, rgba(255,255,255,0.35) ${pc}%)`;s.style.WebkitBackgroundClip='text';s.style.backgroundClip='text';s.style.color='transparent';}
+        s.textContent=ch; text.appendChild(s);
+      });
+    }else{text.textContent=line.text;}
+    div.appendChild(text); track.appendChild(div);
+  });
+  document.getElementById('lyrics-stage').style.transform=`translateY(${Math.max(-60,activeIdx<=0?40:-20)}px)`;
+}
+
+function formatTime(s){if(!s||isNaN(s))return'0:00';const m=Math.floor(s/60),sec=Math.floor(s%60);return m+':'+sec.toString().padStart(2,'0');}
+
+function initAudio(){
+  if(audioEl) return;
+  audioEl=new Audio();
+  audioEl.volume=0.5;
+  audioEl.crossOrigin='anonymous';
+  try{
+    audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    const src=audioCtx.createMediaElementSource(audioEl);
+    analyser=audioCtx.createAnalyser(); analyser.fftSize=256;
+    src.connect(analyser); analyser.connect(audioCtx.destination);
+  }catch(e){console.warn('AudioCtx init:',e);}
+  audioEl.addEventListener('timeupdate',()=>{
+    const p=audioEl.currentTime/(audioEl.duration||1);
+    document.getElementById('progress-fill').style.width=(p*100)+'%';
+    renderLyrics(audioEl.currentTime);
+  });
+  audioEl.addEventListener('ended',()=>{
+    if(currentTrack<PLAYLIST.length-1){currentTrack++;loadTrack();audioEl.play();}
+    else stopPlayback();
+  });
+  audioEl.addEventListener('loadedmetadata',()=>{
+    document.getElementById('song-total-time').textContent=formatTime(audioEl.duration);
+  });
+}
+
+function loadTrack(){
+  const t=PLAYLIST[currentTrack];
+  audioEl.src=t.src;
+  document.getElementById('lyrics-song-title').textContent='♪ '+t.artist+' - '+t.title;
+  document.getElementById('song-current-time').textContent='0:00';
+  document.getElementById('song-total-time').textContent='0:00';
+  document.getElementById('progress-fill').style.width='0%';
+  renderLyrics(0);
+}
+
+function togglePlay(){
+  if(!audioEl) initAudio();
+  if(isPlaying){
+    audioEl.pause(); isPlaying=false;
+    document.getElementById('lyrics-play-icon').innerHTML='<path d="M8 5v14l11-7z"/>';
+    document.getElementById('lyrics-song-status').textContent='‖ 已暂停';
+    clearInterval(timeInterval);
+    return;
+  }
+  if(audioCtx&&audioCtx.state==='suspended') audioCtx.resume();
+  if(!audioEl.src) loadTrack();
+  isPlaying=true;
+  audioEl.play().catch(e=>{console.warn(e);isPlaying=false;});
+  document.getElementById('lyrics-play-icon').innerHTML='<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+  document.getElementById('lyrics-song-status').textContent='▶ '+PLAYLIST[currentTrack].artist+' - '+PLAYLIST[currentTrack].title;
+  if(timeInterval) clearInterval(timeInterval);
+  timeInterval=setInterval(()=>{
+    if(isPlaying&&audioEl) document.getElementById('song-current-time').textContent=formatTime(audioEl.currentTime);
+  },200);
+}
+
+function stopPlayback(){
+  isPlaying=false; if(audioEl) audioEl.pause();
+  document.getElementById('lyrics-play-icon').innerHTML='<path d="M8 5v14l11-7z"/>';
+  document.getElementById('lyrics-song-status').textContent='‖ 播放结束';
+  clearInterval(timeInterval);
+}
+
+function prevTrack(){
+  if(audioEl&&audioEl.currentTime>3){audioEl.currentTime=0;renderLyrics(0);return;}
+  currentTrack=(currentTrack-1+PLAYLIST.length)%PLAYLIST.length;
+  if(!audioEl) initAudio(); loadTrack();
+  if(isPlaying) audioEl.play();
+}
+
+function nextTrack(){
+  currentTrack=(currentTrack+1)%PLAYLIST.length;
+  if(!audioEl) initAudio(); loadTrack();
+  if(isPlaying) audioEl.play();
+}
+
+// 进度条拖拽
+(function(){
+  let drag=false;
+  const bar=document.getElementById('progress-bar');
+  function seek(e){if(!audioEl||!audioEl.duration)return;const r=bar.getBoundingClientRect();const p=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));audioEl.currentTime=p*audioEl.duration;document.getElementById('progress-fill').style.width=(p*100)+'%';}
+  bar.addEventListener('mousedown',e=>{drag=true;seek(e);});
+  document.addEventListener('mousemove',e=>{if(drag)seek(e);});
+  document.addEventListener('mouseup',()=>{drag=false;});
+  bar.addEventListener('touchstart',e=>{drag=true;seek(e.touches[0]);});
+  bar.addEventListener('touchmove',e=>{if(drag)seek(e.touches[0]);});
+  bar.addEventListener('touchend',()=>{drag=false;});
+})();
+
+// 音量
+document.getElementById('volume-slider').addEventListener('input',function(){if(audioEl)audioEl.volume=parseFloat(this.value);});
+
+// 频谱
+(function(){
+  const bars=document.querySelectorAll('.sp-bar');
+  (function tick(){
+    if(analyser){
+      const buf=new Uint8Array(analyser.frequencyBinCount);
+      try{analyser.getByteFrequencyData(buf);}catch(e){}
+      const step=Math.floor(buf.length/bars.length);
+      bars.forEach((b,i)=>{const v=(buf[Math.min(i*step,buf.length-1)]||0)/255;b.style.height=Math.max(2,v*28)+'px';});
     }
+    spectrumRAF=requestAnimationFrame(tick);
+  })();
+})();
 
-    async function loadStats() {
-      try {
-        const res = await client.db.from('site_stats').list();
-        if (res.success && res.data) {
-          const stats = {};
-          res.data.forEach(item => { stats[item.stat_key] = item.stat_value; });
-          document.getElementById('hero-badge').textContent = '✦ ' + (stats.greeting || '2026 高考生');
-          document.getElementById('hero-tagline').textContent = stats.tagline || '';
-          document.getElementById('music-stats').textContent =
-            '🎵 已播放 ' + (stats.music_plays || 56251) + ' 首 · 数据持续更新';
-        }
-      } catch(e) {
-        document.getElementById('hero-badge').textContent = '✦ 2026 高考生 · 636分 · 全省2367名';
-        document.getElementById('hero-tagline').textContent = '以化生为矛，以外语为翼';
-      }
-    }
+// 初始化
+document.getElementById('lyrics-song-title').textContent='♪ '+PLAYLIST[0].artist+' - '+PLAYLIST[0].title;
+renderLyrics(0);
+loadStats(); loadProjects();
 
-    async function loadProjects() {
-      try {
-        const res = await client.db.from('projects').list();
-        const grid = document.getElementById('projects-grid');
-        grid.innerHTML = '';
-        if (res.success && res.data && res.data.length > 0) {
-          res.data.sort((a,b) => (a.sort_order||999) - (b.sort_order||999));
-          res.data.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'project-card dynamic animate-fade-in';
-            card.innerHTML = `<div><h3>${p.title}</h3><p>${p.description||''}</p></div>${p.link ? `<a href="${p.link}" target="_blank">查看详情 →</a>` : ''}`;
-            grid.appendChild(card);
-          });
-        }
-        const count = grid.children.length;
-        const phTexts = ['更多可能性在等着你','生物制造 · 新能源','等待你的下一个灵感'];
-        const phSubs = ['从vibecoding启程','未来的主战场','由你定义'];
-        for (let i = count; i < Math.max(3, count + 1); i++) {
-          const idx = i - count;
-          const card = document.createElement('div');
-          card.className = 'project-card placeholder animate-fade-in';
-          card.innerHTML = `<div class="project-placeholder-inner"><span class="plus-icon">+</span><p>${phTexts[idx%3]}</p><small>${phSubs[idx%3]}</small></div>`;
-          grid.appendChild(card);
-        }
-      } catch(e) { console.warn('Projects load failed:', e); }
-    }
+// ===== 粒子背景 =====
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d'); let W,H;
+const resize=()=>{W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}; resize(); window.addEventListener('resize',resize);
+const C=80,D=150,S=0.3;
+class P{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-0.5)*S;this.vy=(Math.random()-0.5)*S;this.sz=Math.random()*2.5+1;}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>W)this.vx*=-1;if(this.y<0||this.y>H)this.vy*=-1;}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.sz,0,Math.PI*2);ctx.fillStyle='rgba(74,124,255,0.4)';ctx.fill();}}
+const ps=Array.from({length:C},()=>new P());
+function conn(){for(let i=0;i<ps.length;i++)for(let j=i+1;j<ps.length;j++){const dx=ps[i].x-ps[j].x,dy=ps[i].y-ps[j].y,dist=Math.sqrt(dx*dx+dy*dy);if(dist<D){const a=(1-dist/D)*0.3;ctx.beginPath();ctx.moveTo(ps[i].x,ps[i].y);ctx.lineTo(ps[j].x,ps[j].y);ctx.strokeStyle=`rgba(74,124,255,${a})`;ctx.lineWidth=0.8;ctx.stroke();}}}
+function anim(){ctx.clearRect(0,0,W,H);ps.forEach(p=>{p.update();p.draw();});conn();requestAnimationFrame(anim);}
+anim();
 
-    // Particle Background
-    const canvas = document.getElementById('particles');
-    const ctx = canvas.getContext('2d');
-    let W, H;
-    function resize() { W=canvas.width=window.innerWidth; H=canvas.height=window.innerHeight; }
-    resize(); window.addEventListener('resize', resize);
-    const COUNT=80, CONN_DIST=150, SPEED=0.3;
-    class Particle {
-      constructor() { this.reset(); }
-      reset() { this.x=Math.random()*W; this.y=Math.random()*H; this.vx=(Math.random()-0.5)*SPEED; this.vy=(Math.random()-0.5)*SPEED; this.size=Math.random()*2.5+1; }
-      update() { this.x+=this.vx; this.y+=this.vy; if(this.x<0||this.x>W)this.vx*=-1; if(this.y<0||this.y>H)this.vy*=-1; }
-      draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle='rgba(74,124,255,0.4)'; ctx.fill(); }
-    }
-    const particles=Array.from({length:COUNT},()=>new Particle());
-    function drawConnections() {
-      for(let i=0;i<particles.length;i++)for(let j=i+1;j<particles.length;j++){
-        const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, dist=Math.sqrt(dx*dx+dy*dy);
-        if(dist<CONN_DIST){const a=(1-dist/CONN_DIST)*0.3;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(74,124,255,${a})`;ctx.lineWidth=0.8;ctx.stroke();}
-      }
-    }
-    function animate() { ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); drawConnections(); requestAnimationFrame(animate); }
-    animate();
+// Observer
+const obs=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.1});
+document.querySelectorAll('.about-card,.project-card,.contact-item,.music-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease,transform 0.6s ease';obs.observe(el);});
+document.querySelector('.nav-toggle').addEventListener('click',()=>{document.querySelector('.nav-links').classList.toggle('open');});
+document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('open');});});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
 
-    // Observer
-    const obs=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});
-    },{threshold:0.1});
-    document.querySelectorAll('.about-card, .project-card, .contact-item, .music-card').forEach(el=>{
-      el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.6s ease, transform 0.6s ease';
-      obs.observe(el);
-    });
-
-    document.querySelector('.nav-toggle').addEventListener('click',()=>{document.querySelector('.nav-links').classList.toggle('open');});
-    document.querySelectorAll('.nav-links a').forEach(a=>{a.addEventListener('click',()=>{document.querySelector('.nav-links').classList.remove('open');});});
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'});});});
-
-    loadStats(); loadProjects();
-    console.log('%c 窦墨 · 动态个人主页 ','background:#0a0a12;color:#4a7cff;font-size:1.5rem;');
-  </script>
+console.log('%c 窦墨 · 完整播放器 ','background:#0a0a12;color:#4a7cff;font-size:1.2rem;');
+</script>
 </body>
 </html>
